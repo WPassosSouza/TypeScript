@@ -1,0 +1,30 @@
+				<<zod>>
+
+"Para validação vantagem para typescript
+usando para manipulação de dados, refinamento e transformação de dados"
+
+import { z } from 'zod'
+
+const personSchema = z.object({
+
+	name: z.string (),
+	age: z.number (),
+	age: z.string ().transform(age => number(age)), "tranformando string em numero"
+	email: z.string ().email().nullabel(),
+	phone: z.number (),
+	
+
+}) 
+
+const person = {
+	
+	name: 'Alucard,
+	age: 200,
+	email: 'alucard@dominio.com.br',
+	phone: 21980345151,
+	
+}
+
+const parsed = personSchema.parse(person)
+ou
+const {name, age, email, phone} = personSchema.parse(person)
